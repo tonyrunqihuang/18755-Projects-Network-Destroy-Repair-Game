@@ -1,10 +1,12 @@
-CMU 18755 - Networks in the Real World
-Project Name: Network Destroy Repair Game
-Group member: Tony Huang, Vikas Kashyap
+CMU 18755 - Networks in the Real World (Project)
 ====
 
+Project Info:
+- Project Name: Network Destroy Repair Game
+- Group member: Tony Huang, Vikas Kashyap
+
 Project Description:
-Python implementation for Network Destroy-Repair Game
+- This is Python implementation for Network Destroy-Repair Game.
 
 Hyperparamters:
 
