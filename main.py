@@ -7,5 +7,7 @@ from utils.misc import *
 
 if __name__ == '__main__':
     set_seed()
-    runner = Runner('social network', 2)
+    args = get_args()
+
+    runner = Runner(args)
     result = runner.run()

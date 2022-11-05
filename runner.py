@@ -8,17 +8,20 @@ import matplotlib.pyplot as plt
 from utils.misc import *
 from utils.criterion import *
 from algorithm.attack import *
+from algorithm.defense import *
 
 
 class Runner:
-    def __init__(self, name, niter):
-        self.name = name
-        self.G = generate_network(name)
-        self.n = niter
+    def __init__(self, args):
+        self.args = args
+        self.name = self.args.network
+        self.G = generate_network(self.name)
+
+        self.attack = Attack(self.G, self.args.nnode)
+        self.attack = Defense(self.G, self.args.nnode)
 
         self.script_dir = os.path.dirname(__file__)
         self.results_dir = os.path.join(self.script_dir, 'experiment', self.name)
-
         if not os.path.isdir(self.results_dir):
             os.makedirs(self.results_dir)
 
@@ -26,9 +29,16 @@ class Runner:
     def run(self):
 
         molly_reed = []
-        for i in range(self.n):
-            self.G = random_attack(self.G, 1)
-            # self.G = random_defense(self.G)
+        for i in range(self.args.niter):
+
+            if self.args.algorithm == 'random':
+                self.G = self.attack.random_attack()
+                self.G = self.attack.random_defense()
+
+            elif self.args.algorithm == 'smart':
+                self.G = self.attack.smart_attack()
+                self.G = self.attack.smart_defense()
+
             val = molly_reed_criterion(self.G)
             molly_reed.append(val)
 

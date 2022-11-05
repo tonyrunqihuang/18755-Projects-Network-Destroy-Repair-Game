@@ -1,10 +1,26 @@
 import os
-import random
 import math
+import random
+import argparse
 import scipy.special
 import numpy as np
 import networkx as nx
 import matplotlib.pyplot as plt
+
+
+def get_args():
+
+    parser = argparse.ArgumentParser("18751 Project")
+    parser.add_argument("--network", type=str, default='social network', help="network name",
+                        choices=['social network', 'p2p network', 'email network', 'as network'])
+    parser.add_argument("--algorithm", type=str, default='random', help="algorithm name",
+                        choices=['random', 'smart'])
+    parser.add_argument("--niter", type=int, default=3, help="number of steps in experiment")
+    parser.add_argument("--nnode", type=int, default=1, help="number of nodes chosen to remove edges")
+    args = parser.parse_args()
+
+    return args
+
 
 def set_seed(seed=123456):
     random.seed(seed)
@@ -12,10 +28,7 @@ def set_seed(seed=123456):
 
 
 def generate_network(name):
-
-    G = nx.read_edgelist('./data/' + name + ".txt", create_using=nx.DiGraph(), nodetype = int)
-
-    return G
+    return nx.read_edgelist('./data/' + name + ".txt", create_using=nx.DiGraph(), nodetype = int)
 
 
 def get_network_attr(G):
