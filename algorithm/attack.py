@@ -7,6 +7,7 @@ class Attack():
         self.G = G
         self.n = n
 
+
     def random_attack(self):
 
         edges = list(self.G.edges())
@@ -17,7 +18,6 @@ class Attack():
             random_edge = random.sample(edges, self.n)
             for i in random_edge:
                 self.G.remove_edge(i[0], i[1])
-
             return self.G
 
 

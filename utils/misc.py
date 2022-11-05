@@ -15,11 +15,12 @@ def get_args():
                         choices=['social network', 'p2p network', 'email network', 'as network'])
     parser.add_argument("--algorithm", type=str, default='random', help="algorithm name",
                         choices=['random', 'smart'])
-    parser.add_argument("--niter", type=int, default=3, help="number of steps in experiment")
-    parser.add_argument("--nnode", type=int, default=1, help="number of nodes chosen to remove edges")
-    args = parser.parse_args()
+    parser.add_argument("--criterion", type=str, default='molly_reed', help="robustness metric",
+                        choices=['molly_reed'])
+    parser.add_argument("--niter", type=int, default=200, help="number of steps in experiment")
+    parser.add_argument("--nnode", type=int, default=1000, help="number of nodes chosen to remove edges")
 
-    return args
+    return parser.parse_args()
 
 
 def set_seed(seed=123456):
