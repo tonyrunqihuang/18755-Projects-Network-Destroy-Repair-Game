@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 
 def get_args():
 
-    parser = argparse.ArgumentParser("18751 Project")
+    parser = argparse.ArgumentParser("Experiment Hyperparamters")
     parser.add_argument("--network", type=str, default='social network', help="network name",
                         choices=['social network', 'p2p network', 'email network', 'as network'])
     parser.add_argument("--algorithm", type=str, default='random', help="algorithm name",
