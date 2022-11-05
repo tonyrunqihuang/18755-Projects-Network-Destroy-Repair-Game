@@ -1,13 +1,10 @@
-import math
 import random
-import scipy.special
 import numpy as np
 import networkx as nx
-import matplotlib.pyplot as plt
-from utils.functions import generate_network
+from utils.misc import generate_network
 
 
-def random_attack(G, n=1):
+def random_attack(G, n):
 
     edges = list(G.edges())
 
@@ -19,3 +16,7 @@ def random_attack(G, n=1):
             G.remove_edge(i[0], i[1])
 
         return G
+
+
+def smart_attack(G, n):
+    return G

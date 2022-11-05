@@ -1,3 +1,4 @@
+import os
 import random
 import math
 import scipy.special
@@ -5,8 +6,10 @@ import numpy as np
 import networkx as nx
 import matplotlib.pyplot as plt
 
-random.seed(10)
-np.random.seed(10)
+def set_seed(seed=123456):
+    random.seed(seed)
+    np.random.seed(seed)
+
 
 def generate_network(name):
 
@@ -39,18 +42,3 @@ def get_network_attr(G):
     distance = nx.average_shortest_path_length(G)
 
     return nodes, edges, avg_degree, components, avg_cluster_coef, global_cluster_coef, distance
-
-
-def plot_degree_dist(G, network_name):
-
-    y = nx.degree_histogram(G)
-    x = np.arange(len(y)).tolist()
-
-    plt.plot(x, y, 'o')
-    plt.title('Degree distribution of ' + network_name + ' network')
-    plt.xlabel('Node degree')
-    plt.ylabel('Frequency (number of nodes)')
-    plt.savefig(network_name + "_degree distribution.png", format="PNG")
-    plt.show()
-
-    return y

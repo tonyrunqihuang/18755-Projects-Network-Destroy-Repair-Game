@@ -1,9 +1,7 @@
 import random
-import math
 import scipy.special
 import numpy as np
 import networkx as nx
-import matplotlib.pyplot as plt
 
 
 def molly_reed_criterion(G):

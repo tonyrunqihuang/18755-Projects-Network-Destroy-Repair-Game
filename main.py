@@ -1,9 +1,11 @@
+import os
 import networkx as nx
 import numpy as np
 from runner import Runner
+from utils.misc import *
 
 
 if __name__ == '__main__':
-    G = nx.complete_graph(10)
-    print(nx.info(G))
-    runner = Runner('twitter_combined', 10)
+    set_seed()
+    runner = Runner('social network', 2)
+    result = runner.run()
