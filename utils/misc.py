@@ -17,8 +17,8 @@ def get_args():
                         choices=['random', 'smart'])
     parser.add_argument("--criterion", type=str, default='molly_reed', help="robustness metric",
                         choices=['molly_reed'])
-    parser.add_argument("--niter", type=float, default=1000, help="number of steps in experiment")
-    parser.add_argument("--n_edge", type=float, default=100, help="number of randomly selected edges")
+    parser.add_argument("--niter", type=float, default=1e4, help="number of steps in experiment")
+    parser.add_argument("--n_edge", type=float, default=1e2, help="number of randomly selected edges")
     parser.add_argument("--p", type=float, default=0.01, help="probability of selection in smart algorithm")
 
     return parser.parse_args()
