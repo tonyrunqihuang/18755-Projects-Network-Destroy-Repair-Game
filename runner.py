@@ -16,11 +16,12 @@ class Runner:
     def __init__(self, args):
         self.args = args
         self.name = self.args.network
+        self.p = self.args.p
 
         self.network = generate_network(self.name)
 
-        self.attack = Attack(self.network, self.args.nnode)
-        self.defense = Defense(self.network, self.args.nnode)
+        self.attack = Attack(self.network, self.args.n_edge)
+        self.defense = Defense(self.network, self.args.n_edge)
 
         self.metric = Robustness_metric(self.network)
 
@@ -32,6 +33,9 @@ class Runner:
 
     def run(self):
 
+        print('Initiating experiment on {}'.format(self.name))
+        print('Network information \n', nx.info(self.network))
+
         molly_reed = []
         for i in range(self.args.niter):
 
@@ -40,16 +44,15 @@ class Runner:
                 self.network = self.defense.random_defense()
 
             elif self.args.algorithm == 'smart':
-                self.network = self.attack.smart_attack()
+                self.network = self.attack.smart_attack(self.p)
                 self.network = self.defense.smart_defense()
 
-            if self.args.criterion == "molly_reed":
-                val = self.metric.molly_reed()
+            val = self.metric.molly_reed()
+            molly_reed.append(val)
 
             if i % 100 == 0:
+                plot_mr_robustness(molly_reed, self.results_dir, self.name)
                 degree_dist(self.network, self.results_dir, self.name, i)
-
-            molly_reed.append(val)
 
         plot_mr_robustness(molly_reed, self.results_dir, self.name)
         degree_dist(self.network, self.results_dir, self.name, i)
