@@ -4,6 +4,7 @@ import numpy as np
 import networkx as nx
 import matplotlib.pyplot as plt
 
+
 def plot_mr_robustness(data, dir, name):
     # Plotting network robutsness vs. time
     t = np.arange(len(data))
@@ -13,6 +14,7 @@ def plot_mr_robustness(data, dir, name):
     plt.xlabel('Time Step (t)')
     plt.ylabel('Molly-Reed Criteration')
     plt.savefig(dir + "/molly reed_result.png", format="PNG")
+
 
 def degree_dist(network, dir, name, time):
     # Plotting the degree distribution at time t
