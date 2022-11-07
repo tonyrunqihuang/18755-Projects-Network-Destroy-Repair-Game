@@ -46,16 +46,16 @@ class Runner:
                 self.network = self.attack.random_attack()
                 val = self.metric.molly_reed()
                 molly_reed.append(val)
-                # self.network = self.defense.random_defense()
-                # val = self.metric.molly_reed()
-                # molly_reed.append(val)
+
+                self.network = self.defense.random_defense()
+                val = self.metric.molly_reed()
+                molly_reed.append(val)
 
             elif self.args.algorithm == 'smart':
                 self.network = self.attack.smart_attack(self.p)
                 self.network = self.defense.smart_defense()
 
             if i % 100 == 0:
-                plot_mr_robustness(molly_reed, self.results_dir, self.name)
                 degree_dist(self.network, self.results_dir, self.name, i)
                 nx.write_gml(self.network, self.results_dir + '/visualization_t' + str(i) + '.gml')
 
