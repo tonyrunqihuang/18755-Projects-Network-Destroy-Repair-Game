@@ -14,6 +14,8 @@ def plot_mr_robustness(data, dir, name):
     plt.xlabel('Time Step (t)')
     plt.ylabel('Molly-Reed Criteration')
     plt.savefig(dir + "/molly reed_result.png", format="PNG")
+    plt.close()
+
 
 
 def degree_dist(network, dir, name, time):
@@ -26,6 +28,7 @@ def degree_dist(network, dir, name, time):
     plt.xlabel('Node degree')
     plt.ylabel('Frequency (number of nodes)')
     plt.savefig(dir + "/degree dist_" + str(time) + ".png", format="PNG")
+    plt.close()
 
 # def graph_visualization(G):
     # return nx.write_gml(G, "email-Enron.gml")

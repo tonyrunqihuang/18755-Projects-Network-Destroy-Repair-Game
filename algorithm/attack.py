@@ -6,7 +6,7 @@ import networkx as nx
 class Attack():
     def __init__(self, G, n):
         self.G = G
-        self.n = n
+        self.n = int(n)
 
 
     def random_attack(self):
