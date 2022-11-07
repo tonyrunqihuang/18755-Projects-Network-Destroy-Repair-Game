@@ -20,6 +20,8 @@ class Runner:
 
         self.network = generate_network(self.name)
 
+        # n_edges = (1, 5, 10%) of total edges of the network
+
         self.attack = Attack(self.network, self.args.n_edge)
         self.defense = Defense(self.network, self.args.n_edge)
 
@@ -35,7 +37,7 @@ class Runner:
 
         print('Initiating experiment on {}'.format(self.name))
         print('Network information \n', nx.info(self.network))
-    
+
         molly_reed = []
 
         for i in range(int(self.args.niter)):
@@ -53,10 +55,12 @@ class Runner:
             elif self.args.algorithm == 'smart':
                 self.network = self.attack.smart_attack(self.p)
                 self.network = self.defense.smart_defense()
-            
+
             if i % 100 == 0:
                 plot_mr_robustness(molly_reed, self.results_dir, self.name)
                 degree_dist(self.network, self.results_dir, self.name, i)
+
+        # save molly_reed result (include in the name, the %)
 
         plot_mr_robustness(molly_reed, self.results_dir, self.name)
         degree_dist(self.network, self.results_dir, self.name, i)
