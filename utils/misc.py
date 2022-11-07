@@ -11,15 +11,15 @@ import matplotlib.pyplot as plt
 def get_args():
 
     parser = argparse.ArgumentParser("Experiment Hyperparamters")
-    parser.add_argument("--network", type=str, default='social network', help="network name",
+    parser.add_argument("--network_name", type=str, default='social network', help="network name",
                         choices=['social network', 'p2p network', 'email network', 'as network'])
     parser.add_argument("--algorithm", type=str, default='random', help="algorithm name",
                         choices=['random', 'smart'])
     parser.add_argument("--criterion", type=str, default='molly_reed', help="robustness metric",
                         choices=['molly_reed'])
-    parser.add_argument("--niter", type=float, default=1e3, help="number of steps in experiment")
-    parser.add_argument("--n_edge", type=float, default=1e2, help="number of randomly selected edges")
-    parser.add_argument("--p", type=float, default=0.01, help="probability of selection in smart algorithm")
+    parser.add_argument("--niter", type=float, default=200, help="number of steps in experiment")
+    parser.add_argument("--p", type=float, default=0.01, help="probability of selection",
+                        choices=[0.01, 0.05, 0.1])
 
     return parser.parse_args()
 

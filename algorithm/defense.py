@@ -4,9 +4,10 @@ import networkx as nx
 
 
 class Defense():
-    def __init__(self, G, n):
+    def __init__(self, G, p):
         self.G = G
-        self.n = int(n)
+        self.p = p
+
 
     def random_defense(self):
 
@@ -15,10 +16,8 @@ class Defense():
         if not nodes:
             return self.G
 
-        # Change the if condition
-
         else:
-            while i in range(self.n):
+            for i in range(int(self.p * len(nodes))):
                 random_nodes = random.sample(nodes, 2)
                 if random_nodes[0] in self.G.neighbors(random_nodes[1]) == False:
                     self.G.add_edge(random_nodes[0], random_nodes[1])

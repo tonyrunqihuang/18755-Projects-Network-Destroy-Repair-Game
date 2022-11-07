@@ -15,20 +15,19 @@ from algorithm.defense import *
 class Runner:
     def __init__(self, args):
         self.args = args
-        self.name = self.args.network
+        self.name = self.args.network_name
         self.p = self.args.p
 
         self.network = generate_network(self.name)
 
-        # n_edges = (1, 5, 10%) of total edges of the network
-
-        self.attack = Attack(self.network, self.args.n_edge)
-        self.defense = Defense(self.network, self.args.n_edge)
+        # I use self.p (i.e., the perecentage) as an input, instead of the actual number of edges to be removed
+        self.attack = Attack(self.network, self.p)
+        self.defense = Defense(self.network, self.p)
 
         self.metric = Robustness_metric(self.network)
 
         self.script_dir = os.path.dirname(__file__)
-        self.results_dir = os.path.join(self.script_dir, 'experiment', self.name)
+        self.results_dir = os.path.join(self.script_dir, 'experiment', self.name, str(self.p))
         if not os.path.isdir(self.results_dir):
             os.makedirs(self.results_dir)
 
@@ -47,10 +46,9 @@ class Runner:
                 self.network = self.attack.random_attack()
                 val = self.metric.molly_reed()
                 molly_reed.append(val)
-                #print(molly_reed)
-                self.network = self.defense.random_defense()
-                val = self.metric.molly_reed()
-                molly_reed.append(val)
+                # self.network = self.defense.random_defense()
+                # val = self.metric.molly_reed()
+                # molly_reed.append(val)
 
             elif self.args.algorithm == 'smart':
                 self.network = self.attack.smart_attack(self.p)
@@ -59,10 +57,11 @@ class Runner:
             if i % 100 == 0:
                 plot_mr_robustness(molly_reed, self.results_dir, self.name)
                 degree_dist(self.network, self.results_dir, self.name, i)
+                nx.write_gml(self.network, self.results_dir + '/visualization_t' + str(i) + '.gml')
 
-        # save molly_reed result (include in the name, the %)
-
+        np.save(self.results_dir + '/mollye_reed_result', np.array(molly_reed))
         plot_mr_robustness(molly_reed, self.results_dir, self.name)
         degree_dist(self.network, self.results_dir, self.name, i)
+        nx.write_gml(self.network, self.results_dir + '/visualization_t' + str(self.args.niter) + '.gml')
 
         return molly_reed
