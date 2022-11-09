@@ -16,6 +16,8 @@ def plot_mr_robustness(data, dir, name):
     plt.savefig(dir + "/molly reed_result.png", format="PNG")
     plt.close()
 
+    return data
+
 
 def degree_dist(network, dir, name, time):
     # Plotting the degree distribution at time t
@@ -28,3 +30,6 @@ def degree_dist(network, dir, name, time):
     plt.ylabel('Frequency (number of nodes)')
     plt.savefig(dir + "/degree dist_t" + str(time) + ".png", format="PNG")
     plt.close()
+    np.save(dir + '/degree dist_t' + str(time), y)
+
+    return y

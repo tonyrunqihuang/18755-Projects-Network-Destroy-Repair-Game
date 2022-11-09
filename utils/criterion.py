@@ -10,7 +10,7 @@ class Robustness_metric():
 
     def molloy_reed(self):
 
-        # Molly-Reed criterion states that the network has a giant component if <k^2> / <k> > 2
+        # Molloy-Reed criterion states that the network has a giant component if <k^2> / <k> > 2
 
         degree = [val for (node, val) in self.G.degree()]
         degree_sqrt = np.square(degree)

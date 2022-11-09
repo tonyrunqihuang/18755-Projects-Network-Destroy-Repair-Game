@@ -17,6 +17,7 @@ class Runner:
         self.args = args
         self.name = self.args.network_name
         self.p = self.args.p
+        self.n = self.args.niter
 
         self.network = generate_network(self.name)
         self.num_edges = len(list(self.network.edges()))
@@ -27,19 +28,19 @@ class Runner:
         self.metric = Robustness_metric(self.network)
 
         self.script_dir = os.path.dirname(__file__)
-        self.results_dir = os.path.join(self.script_dir, 'experiment', self.name, str(self.p))
+        self.results_dir = os.path.join(self.script_dir, 'experiment', self.name, self.args.algorithm, str(self.p))
         if not os.path.isdir(self.results_dir):
             os.makedirs(self.results_dir)
 
 
     def run(self):
 
-        print('Initiating experiment on {}'.format(self.name))
+        print('Initiating experiment on {}, p = {}, iterations = {}'.format(self.name, self.p, self.n))
         print('Network information \n', nx.info(self.network))
 
         molloy_reed = []
 
-        for i in range(2):#int(self.args.niter)):
+        for i in range(self.n):
 
             if self.args.algorithm == 'random':
 
@@ -61,12 +62,12 @@ class Runner:
 
             if i % 100 == 0:
 
-                degree_dist(self.network, self.results_dir, self.name, i)
+                deg_dist = degree_dist(self.network, self.results_dir, self.name, i)
                 nx.write_gml(self.network, self.results_dir + '/visualization_t' + str(i) + '.gml')
 
         np.save(self.results_dir + '/molloy_reed_result', np.array(molloy_reed))
-        plot_mr_robustness(molloy_reed, self.results_dir, self.name)
-        degree_dist(self.network, self.results_dir, self.name, i)
+        mr = plot_mr_robustness(molloy_reed, self.results_dir, self.name)
+        deg_dist = degree_dist(self.network, self.results_dir, self.name, i)
         nx.write_gml(self.network, self.results_dir + '/visualization_t' + str(self.args.niter) + '.gml')
 
         return molloy_reed
