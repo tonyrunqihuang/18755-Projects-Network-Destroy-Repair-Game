@@ -20,7 +20,7 @@ class Runner:
 
         self.network = generate_network(self.name)
         self.num_edges = len(list(self.network.edges()))
-        # I use self.p (i.e., the perecentage) as an input, instead of the actual number of edges to be removed
+
         self.attack = Attack(self.network, self.p)
         self.defense = Defense(self.network, self.p, self.num_edges)
 
@@ -37,36 +37,36 @@ class Runner:
         print('Initiating experiment on {}'.format(self.name))
         print('Network information \n', nx.info(self.network))
 
-        molly_reed = []
+        molloy_reed = []
 
         for i in range(2):#int(self.args.niter)):
 
             if self.args.algorithm == 'random':
 
                 self.network = self.attack.random_attack()
-                val = self.metric.molly_reed()
-                molly_reed.append(val)
-                self.network = self.defense.random_defense() 
-                val = self.metric.molly_reed()
-                molly_reed.append(val)
-        
+                val = self.metric.molloy_reed()
+                molloy_reed.append(val)
+                self.network = self.defense.random_defense()
+                val = self.metric.molloy_reed()
+                molloy_reed.append(val)
+
             elif self.args.algorithm == 'smart':
 
                 self.network = self.attack.smart_attack()
-                val = self.metric.molly_reed()
-                molly_reed.append(val)
+                val = self.metric.molloy_reed()
+                molloy_reed.append(val)
                 #self.network = self.defense.smart_defense()
-                val = self.metric.molly_reed()
-                molly_reed.append(val)
+                val = self.metric.molloy_reed()
+                molloy_reed.append(val)
 
             if i % 100 == 0:
 
                 degree_dist(self.network, self.results_dir, self.name, i)
                 nx.write_gml(self.network, self.results_dir + '/visualization_t' + str(i) + '.gml')
 
-        np.save(self.results_dir + '/mollye_reed_result', np.array(molly_reed))
-        plot_mr_robustness(molly_reed, self.results_dir, self.name)
+        np.save(self.results_dir + '/molloy_reed_result', np.array(molloy_reed))
+        plot_mr_robustness(molloy_reed, self.results_dir, self.name)
         degree_dist(self.network, self.results_dir, self.name, i)
         nx.write_gml(self.network, self.results_dir + '/visualization_t' + str(self.args.niter) + '.gml')
 
-        return molly_reed
+        return molloy_reed

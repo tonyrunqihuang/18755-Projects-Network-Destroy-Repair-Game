@@ -8,7 +8,7 @@ class Robustness_metric():
     def __init__(self, G):
         self.G = G
 
-    def molly_reed(self):
+    def molloy_reed(self):
 
         # Molly-Reed criterion states that the network has a giant component if <k^2> / <k> > 2
 

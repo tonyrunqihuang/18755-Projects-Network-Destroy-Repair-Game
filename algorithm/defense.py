@@ -18,6 +18,7 @@ class Defense():
 
         else:
             i = 0
+            
             while(1):
 
                 random_nodes = random.sample(nodes, 2)
@@ -30,8 +31,8 @@ class Defense():
             return self.G
 
     def smart_defense(self):
-        
-        
+
+
         degree = sorted(self.G.degree, key=lambda x: x[1], reverse=True)
         node_select = degree[:(int(len(degree) * self.p))]
         print((node_select))
@@ -39,7 +40,7 @@ class Defense():
         print("v")
         print(len(node_not_select))
         i = 0
-       
+
         '''
         while(1):
 
@@ -48,15 +49,15 @@ class Defense():
             random_node = random.sample(node_not_select, 1)
             print("r")
             print(node)
-            
+
             #print(random_node)
-        
+
             if self.G.has_edge(node[0], random_node[0]) == False:
                 self.G.add_edge(node[0], random_node[0])
                 i+=1
                 print("i2")
                 print(i)
-                        
+
          if i == int(self.p * self.num_edges):
            break
         '''
