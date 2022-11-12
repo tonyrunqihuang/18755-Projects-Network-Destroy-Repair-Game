@@ -9,6 +9,7 @@ class Defense():
         self.p = p
         self.num_edges = num_edges
 
+
     def random_defense(self):
 
         nodes = list(self.G.nodes())
@@ -18,7 +19,7 @@ class Defense():
 
         else:
             i = 0
-            
+
             while(1):
 
                 random_nodes = random.sample(nodes, 2)
@@ -29,7 +30,7 @@ class Defense():
                     break
 
             return self.G
-            
+
 
     def smart_defense(self):
 
@@ -37,22 +38,22 @@ class Defense():
         degree = sorted(self.G.degree, key=lambda x: x[1], reverse=True)
         node_select = degree[:(int(len(degree) * self.p))]
         node_not_select = degree[(int(len(degree) * self.p)):]
-        
+
         i = self.G.number_of_edges()
-        
+
         while(1):
-          
+
           for node in node_select:
-            
+
              random_node = random.sample(node_not_select, 1)
 
              if self.G.has_edge(node[0], random_node[0][0]) == False:
-                
+
                 self.G.add_edge(node[0], random_node[0][0])
                 i+=1
                 if  i == self.num_edges:
                   break
-        
+
           if  i == self.num_edges:
              break
 

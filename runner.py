@@ -41,6 +41,7 @@ class Runner:
         molloy_reed = []
 
         for i in range(self.n):
+            print('time' + str(i))
 
             if self.args.algorithm == 'random':
 
@@ -56,7 +57,6 @@ class Runner:
                 self.network = self.attack.smart_attack()
                 val = self.metric.molloy_reed()
                 molloy_reed.append(val)
-
                 self.network = self.defense.smart_defense()
                 val = self.metric.molloy_reed()
                 molloy_reed.append(val)
