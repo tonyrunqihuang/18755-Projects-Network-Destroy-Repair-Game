@@ -41,7 +41,6 @@ class Runner:
         molloy_reed = []
 
         for i in range(self.n):
-            print('time' + str(i))
 
             if self.args.algorithm == 'random':
 
