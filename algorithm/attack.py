@@ -28,7 +28,7 @@ class Attack():
 
         # Smart attack follows this processs
         # 1. Select the top p% of nodes with the highest degree
-        # 2. Randomly sample a set of edges from each of the selected node
+        # 2. Randomly sample a set of edges from each of the selected node and remove from the network
 
         degree = sorted(self.G.degree, key=lambda x: x[1], reverse=True)
         node_select = degree[:(int(len(degree) * self.p))]

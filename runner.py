@@ -35,8 +35,8 @@ class Runner:
 
     def run(self):
 
-        print('Initiating experiment on {}, p = {}, iterations = {}'.format(self.name, self.p, self.n))
         print('Network information \n', nx.info(self.network))
+        print('Initiating experiment on {}, p = {}, iterations = {}'.format(self.name, self.p, self.n))
 
         molloy_reed = []
 
@@ -61,7 +61,7 @@ class Runner:
                 molloy_reed.append(val)
 
             if i % 100 == 0:
-
+                print('Time step = {}, Molloy-Reed = {}'.format(i, val))
                 deg_dist = degree_dist(self.network, self.results_dir, self.name, i)
                 nx.write_gml(self.network, self.results_dir + '/visualization_t' + str(i) + '.gml')
 

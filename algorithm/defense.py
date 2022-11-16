@@ -12,6 +12,10 @@ class Defense():
 
     def random_defense(self):
 
+        # Random defense proceeds as followed
+        # 1) Select two nodes at random
+        # 2) Add an edge between them if there is none, until the same number of removed edges are added back
+
         nodes = list(self.G.nodes())
 
         if not nodes:
@@ -34,6 +38,10 @@ class Defense():
 
     def smart_defense(self):
 
+        # Smart defense proceeds as followed
+        # 1) Sort the nodes by the highest degree and select the top  p% of nodes
+        # 2) For each of the selected nodes, randomly choose an unselected node and add an edge if there none
+        # 3) Continue until the number of removed edges are added back
 
         degree = sorted(self.G.degree, key=lambda x: x[1], reverse=True)
         node_select = degree[:(int(len(degree) * self.p))]
