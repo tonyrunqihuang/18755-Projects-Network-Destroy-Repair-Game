@@ -13,12 +13,14 @@ def get_args():
     parser = argparse.ArgumentParser("Experiment Hyperparamters")
     parser.add_argument("--network_name", type=str, default='p2p network', help="network name",
                         choices=['social network', 'p2p network', 'email network', 'as network'])
-    parser.add_argument("--algorithm", type=str, default='random', help="algorithm name",
-                        choices=['random', 'smart'])
+    parser.add_argument("--attack_algorithm", type=str, default='degree', help="attack algorithm name",
+                    choices=['random', 'smart', 'betweenness'])
+    parser.add_argument("--defense_algorithm", type=str, default='random', help="defense algorithm name",
+                    choices=['random', 'degree', 'betweenness'])
     parser.add_argument("--criterion", type=str, default='molloy_reed', help="robustness metric",
                         choices=['molloy_reed'])
-    parser.add_argument("--niter", type=float, default=1000, help="number of steps in experiment")
-    parser.add_argument("--p", type=float, default=0.05, help="probability of selection",
+    parser.add_argument("--niter", type=float, default=100, help="number of steps in experiment")
+    parser.add_argument("--p", type=float, default=0.1, help="probability of selection",
                         choices=[0.01, 0.05, 0.1])
 
     return parser.parse_args()

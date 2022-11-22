@@ -1,5 +1,6 @@
 import random
 import numpy as np
+import igraph as ig
 import networkx as nx
 
 
@@ -36,9 +37,9 @@ class Defense():
             return self.G
 
 
-    def smart_defense(self):
+    def degree_defense(self):
 
-        # Smart defense proceeds as followed
+        # Degree defense proceeds as followed
         # 1) Sort the nodes by the highest degree and select the top  p% of nodes
         # 2) For each of the selected nodes, randomly choose an unselected node and add an edge if there none
         # 3) Continue until the number of removed edges are added back

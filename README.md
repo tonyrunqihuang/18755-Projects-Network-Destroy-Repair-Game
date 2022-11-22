@@ -10,7 +10,7 @@ Project Description:
 
 Hyperparamters:
 - Network name: there are four available networks, including social network, p2p network, autonomous system network and email networks.
-- Algorithm: attack and defense algorithms can be random or smart
+- Algorithm: attack and defense algorithms can be random, degree, or betweeness
 - Number of iterations (niter): number of time steps an experiment is expected to perform
 
 ## Usage
