@@ -14,8 +14,8 @@ def get_args():
     parser.add_argument("--network_name", type=str, default='p2p network', help="network name",
                         choices=['social network', 'p2p network', 'email network', 'as network'])
     parser.add_argument("--attack_algorithm", type=str, default='degree', help="attack algorithm name",
-                    choices=['random', 'smart', 'betweenness'])
-    parser.add_argument("--defense_algorithm", type=str, default='random', help="defense algorithm name",
+                    choices=['random', 'degree', 'betweenness'])
+    parser.add_argument("--defense_algorithm", type=str, default='degree', help="defense algorithm name",
                     choices=['random', 'degree', 'betweenness'])
     parser.add_argument("--criterion", type=str, default='molloy_reed', help="robustness metric",
                         choices=['molloy_reed'])

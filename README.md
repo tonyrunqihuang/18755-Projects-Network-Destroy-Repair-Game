@@ -7,10 +7,12 @@ Project Info:
 
 Project Description:
 - This is Python implementation for Network Destroy-Repair Game.
+- Data: Stanford SNAP data set
 
-Hyperparamters:
+Paramters:
 - Network: p2p network (Gnutella peer-to-peer network, August 31 2002)
-- Algorithm: attack and defense algorithms can be random, degree, or betweeness
+- Attack algorithm: attack algorithm can be random, degree, or betweeness
+- Defense algorithm: defense algorithm can be random, degree, or betweeness
 - Number of iterations (niter): number of time steps an experiment is expected to perform
 
 ## Usage

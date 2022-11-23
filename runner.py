@@ -61,7 +61,7 @@ class Runner:
             elif self.args.defense_algorithm == 'degree':
                 self.network = self.defense.degree_defense()
             else:
-                self.network = self.defense.betweenness_attack()
+                self.network = self.defense.betweenness_defense()
             val = self.metric.molloy_reed()
             molloy_reed.append(val)
 
