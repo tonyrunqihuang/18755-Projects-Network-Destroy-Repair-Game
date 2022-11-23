@@ -26,26 +26,6 @@ class Attack():
             return self.G
 
 
-    # def smart_attack(self):
-
-    #     # Smart attack follows the following process:
-    #     # 1. Select the top p% of nodes with the highest degree
-    #     # 2. Randomly sample a set of edges from each of the selected node and remove from the network
-
-    #     degree = sorted(self.G.degree, key=lambda x: x[1], reverse=True)
-    #     node_select = degree[:(int(len(degree) * self.p))]
-
-    #     for node in node_select:
-
-    #         edge = list(self.G.edges(node[0]))
-    #         random_edge = random.sample(edge, int(len(edge) * self.p))
-
-    #         for i in random_edge:
-    #             self.G.remove_edge(i[0], i[1])
-
-    #     return self.G
-
-
     def degree_attack(self):
 
         # Degree attack follows the following process:
@@ -63,6 +43,7 @@ class Attack():
             for edge in list(edges):
                 self.G.remove_edge(edge[0], edge[1])
                 count += 1
+                
                 if count == self.num_edges:
                     break
 
@@ -86,6 +67,7 @@ class Attack():
         # Create corresponding list for edge betweenness
         nx_btw_ctr = {}
         edge_list = list(nx.edges(self.G))
+
         for i in range(len(edge_list)):
             nx_btw_ctr[edge_list[i]] = ig_edge_btw[i]
 
@@ -95,6 +77,7 @@ class Attack():
         for edge in nx_btw_ctr_sorted:
             self.G.remove_edge(edge[0], edge[1])
             count += 1
+
             if count == self.num_edges:
                 break
 

@@ -9,7 +9,7 @@ Project Description:
 - This is Python implementation for Network Destroy-Repair Game.
 
 Hyperparamters:
-- Network name: there are four available networks, including social network, p2p network, autonomous system network and email networks.
+- Network: p2p network (Gnutella peer-to-peer network, August 31 2002)
 - Algorithm: attack and defense algorithms can be random, degree, or betweeness
 - Number of iterations (niter): number of time steps an experiment is expected to perform
 
