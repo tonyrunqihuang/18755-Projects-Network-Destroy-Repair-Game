@@ -1,7 +1,5 @@
-import sys
-import math
+import os
 import random
-import scipy.special
 import numpy as np
 import networkx as nx
 import matplotlib.pyplot as plt
@@ -19,7 +17,7 @@ class Runner:
         self.name = self.args.network_name
         self.p = self.args.p
         self.n = self.args.niter
-        self.algo_name = "attack_" + self.args.attack_algorithm + " vs. " + "defense_" + self.args.defense_algorithm
+        self.algo_name = self.args.attack_algorithm + " Attack"+ " vs. " + self.args.defense_algorithm + " Defense"
 
         self.network = generate_network(self.name)
         self.num_edges = len(list(self.network.edges()))
@@ -43,22 +41,21 @@ class Runner:
 
         molloy_reed = []
         val = self.metric.molloy_reed()
-        molloy_reed.append(val)        
+        molloy_reed.append(val)
 
         for i in tqdm(range(self.n)):
-            print('Time ', i)
-            if self.args.attack_algorithm == 'random':
+            if self.args.attack_algorithm == 'Random':
                 self.network = self.attack.random_attack()
-            elif self.args.attack_algorithm == 'degree':
+            elif self.args.attack_algorithm == 'Degree':
                 self.network = self.attack.degree_attack()
             else:
                 self.network = self.attack.betweenness_attack()
             val = self.metric.molloy_reed()
             molloy_reed.append(val)
 
-            if self.args.defense_algorithm == 'random':
+            if self.args.defense_algorithm == 'raRandomndom':
                 self.network = self.defense.random_defense()
-            elif self.args.defense_algorithm == 'degree':
+            elif self.args.defense_algorithm == 'Degree':
                 self.network = self.defense.degree_defense()
             else:
                 self.network = self.defense.betweenness_defense()

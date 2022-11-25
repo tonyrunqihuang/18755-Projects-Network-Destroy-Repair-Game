@@ -1,12 +1,12 @@
-import random
-import scipy.special
 import numpy as np
 import networkx as nx
 import matplotlib.pyplot as plt
 
 
 def plot_mr_robustness(data, dir, name):
+
     # Plotting network robutsness vs. time
+
     t = np.arange(len(data))
     plt.figure()
     plt.plot(t, data, '-')
@@ -20,7 +20,9 @@ def plot_mr_robustness(data, dir, name):
 
 
 def degree_dist(network, dir, name, time):
+
     # Plotting the degree distribution at time t
+
     y = nx.degree_histogram(network)
     x = np.arange(len(y)).tolist()
     plt.figure()

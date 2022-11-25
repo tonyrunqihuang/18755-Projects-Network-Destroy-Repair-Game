@@ -1,12 +1,10 @@
-import random
-import scipy.special
 import numpy as np
-import networkx as nx
 
 
 class Robustness_metric():
     def __init__(self, G):
         self.G = G
+
 
     def molloy_reed(self):
 
