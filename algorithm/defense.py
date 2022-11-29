@@ -77,8 +77,8 @@ class Defense():
         # 2) For each of the highest betweenness nodes, choose an node based on degree and add an edge if there none
         # 3) Continue until the number of removed edges are added back
             
-        nx.write_gml(self.G, 'network1.gml')
-        g = ig.Graph.Read_GML('network1.gml')
+        nx.write_gml(self.G, 'network.gml')
+        g = ig.Graph.Read_GML('network.gml')
         
         #computing node betweenness
         ig_node_btw = ig.Graph.betweenness(g)
