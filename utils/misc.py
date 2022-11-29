@@ -8,12 +8,12 @@ import networkx as nx
 def get_args():
 
     parser = argparse.ArgumentParser("Experiment Hyperparamters")
-    parser.add_argument("--seed", type=float, default=1, help="random seed")
+    parser.add_argument("--seed", type=float, default=123456, help="random seed")
     parser.add_argument("--network_name", type=str, default='P2P network', help="network name",
                         choices=['P2P network'])
-    parser.add_argument("--attack_algorithm", type=str, default='Random', help="attack algorithm name",
-                    choices=['Random', 'Degree', 'Betweenness'])
-    parser.add_argument("--defense_algorithm", type=str, default='Degree', help="defense algorithm name",
+    parser.add_argument("--attack_algorithm", type=str, default='Betweenness', help="attack algorithm name",
+                        choices=['Random', 'Degree', 'Betweenness'])
+    parser.add_argument("--defense_algorithm", type=str, default='Betweenness', help="defense algorithm name",
                     choices=['Random', 'Degree', 'Betweenness'])
     parser.add_argument("--criterion", type=str, default='molloy_reed', help="robustness metric",
                         choices=['molloy_reed'])
@@ -25,6 +25,7 @@ def get_args():
 
 
 def set_seed(seed=123456):
+    
     random.seed(seed)
     np.random.seed(seed)
 

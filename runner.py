@@ -44,6 +44,8 @@ class Runner:
         molloy_reed.append(val)
 
         for i in tqdm(range(self.n)):
+        # for i in range(self.n):
+            # print('Time ', i)
             if self.args.attack_algorithm == 'Random':
                 self.network = self.attack.random_attack()
             elif self.args.attack_algorithm == 'Degree':
@@ -52,8 +54,9 @@ class Runner:
                 self.network = self.attack.betweenness_attack()
             val = self.metric.molloy_reed()
             molloy_reed.append(val)
+            # print('After attack', self.network.number_of_edges())
 
-            if self.args.defense_algorithm == 'raRandomndom':
+            if self.args.defense_algorithm == 'Random':
                 self.network = self.defense.random_defense()
             elif self.args.defense_algorithm == 'Degree':
                 self.network = self.defense.degree_defense()
@@ -61,14 +64,15 @@ class Runner:
                 self.network = self.defense.betweenness_defense()
             val = self.metric.molloy_reed()
             molloy_reed.append(val)
+            # print('After attack', self.network.number_of_edges())
 
             if i % 10 == 0:
                 print('Time step = {}, Molloy-Reed = {}'.format(i, val))
                 deg_dist = degree_dist(self.network, self.results_dir, self.name, i)
                 nx.write_gml(self.network, self.results_dir + '/visualization_t' + str(i) + '.gml')
 
-        np.save(self.results_dir + '/molloy_reed_result', np.array(molloy_reed))
-        mr = plot_mr_robustness(molloy_reed, self.results_dir, self.name)
+            np.save(self.results_dir + '/molloy_reed_result', np.array(molloy_reed))
+            mr = plot_mr_robustness(molloy_reed, self.results_dir, self.name)
         deg_dist = degree_dist(self.network, self.results_dir, self.name, i+1)
         nx.write_gml(self.network, self.results_dir + '/visualization_t' + str(self.args.niter) + '.gml')
 

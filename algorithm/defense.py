@@ -9,11 +9,12 @@ class Defense():
         self.G = G
         self.p = p
         self.num_edges = num_edges
+        self.total_edges = int(self.G.number_of_edges() * self.p)
 
 
     def random_defense(self):
 
-        # Random defense proceeds as followed
+        # Random defense proceeds as followed:
         # 1) Select two nodes at random
         # 2) Add an edge between them if there is none, until the same number of removed edges are added back
 
@@ -71,10 +72,10 @@ class Defense():
 
     def betweenness_defense(self):
 
-            # Degree defense proceeds as followed:
-            # 1) Sort the nodes by the highest degree and highest betweenness and select the top p% of nodes for both
-            # 2) For each of the highest betweenness nodes, choose an node based on degree and add an edge if there none
-            # 3) Continue until the number of removed edges are added back
+        # Degree defense proceeds as followed:
+        # 1) Sort the nodes by the highest degree and highest betweenness and select the top p% of nodes for both
+        # 2) For each of the highest betweenness nodes, choose an node based on degree and add an edge if there none
+        # 3) Continue until the number of removed edges are added back
             
         nx.write_gml(self.G, 'network1.gml')
         g = ig.Graph.Read_GML('network1.gml')
@@ -132,9 +133,5 @@ class Defense():
              break
 
           j+=1
-        
-        print("defence done")
-        print('Network information defence \n', nx.info(self.G))
 
         return self.G
-            
