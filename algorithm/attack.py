@@ -57,7 +57,7 @@ class Attack():
 
         # Betweenness attack follows the following process:
         # 1. Compute and rank the edge betweenness centrality of the network
-        # 2. Remove p% of the edges from the top
+        # 2. Remove p% of the edges with the highest edge betweenness centrality
 
         nx.write_gml(self.G, 'network.gml')
         g = ig.Graph.Read_GML('network.gml')

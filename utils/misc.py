@@ -31,6 +31,7 @@ def set_seed(seed=123456):
 
 
 def generate_network(name):
+    
     return nx.read_edgelist('./data/' + name + ".txt", create_using=nx.DiGraph(), nodetype = int)
 
 
