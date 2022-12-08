@@ -6,16 +6,33 @@ import networkx as nx
 
 class Defense():
     def __init__(self, G, p, num_edges):
+        """
+        Initates the defense algorithm class
+
+        Parameters:
+        G (networkx type): the network
+        p (float): probability of defense (i.e., the proportion of the initials edges being repaired)
+
+        Returns:
+        self.G (networkx type): the network
+        self.p (float): probability of defense
+        self.num_edges (int): the total number of edges being repair
+        """
+
         self.G = G
         self.p = p
         self.num_edges = num_edges
 
 
     def random_defense(self):
+        """
+        Executes random defense by the following process:
+        1) Select two nodes at random
+        2) Add an edge between them if there is none, until the same number of removed edges are added back
 
-        # Random defense proceeds as followed:
-        # 1) Select two nodes at random
-        # 2) Add an edge between them if there is none, until the same number of removed edges are added back
+        Returns:
+        self.G (networkx type): the network after defense
+        """
 
         nodes = list(self.G.nodes())
 
@@ -38,11 +55,15 @@ class Defense():
 
 
     def degree_defense(self):
+        """
+        Executes degree defense by the following process:
+        1) Sort the nodes by the highest degree and select the top  p% of nodes
+        2) For each of the selected nodes, randomly choose an unselected node and add an edge if there none
+        3) Continue until the number of removed edges are added back
 
-        # Degree defense proceeds as followed:
-        # 1) Sort the nodes by the highest degree and select the top  p% of nodes
-        # 2) For each of the selected nodes, randomly choose an unselected node and add an edge if there none
-        # 3) Continue until the number of removed edges are added back
+        Returns:
+        self.G (networkx type): the network after defense
+        """
 
         degree = sorted(self.G.degree, key=lambda x: x[1], reverse=True)
         node_select = degree[:(int(len(degree) * self.p))]
@@ -70,11 +91,19 @@ class Defense():
 
 
     def betweenness_defense(self):
+        """
+        Executes degree defense by the following process:
+        1) Sort the nodes by the highest degree and highest betweenness and select the top p% of nodes for both
+        2) For each of the highest betweenness nodes, choose an node based on degree and add an edge if there none
+        3) Continue until the number of removed edges are added back
 
-        # Degree defense proceeds as followed:
-        # 1) Sort the nodes by the highest degree and highest betweenness and select the top p% of nodes for both
-        # 2) For each of the highest betweenness nodes, choose an node based on degree and add an edge if there none
-        # 3) Continue until the number of removed edges are added back
+        Returns:
+        self.G (networkx type): the network after defense
+
+        Notes: 
+        1) To speed up computation on betweenness centrality, igraph is used to calcualte betweenness
+        """
+
             
         nx.write_gml(self.G, 'network.gml')
         g = ig.Graph.Read_GML('network.gml')

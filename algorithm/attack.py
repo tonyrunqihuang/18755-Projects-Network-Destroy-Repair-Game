@@ -25,15 +25,12 @@ class Attack():
 
 
     def random_attack(self):
-
         """
         Executes random attack by selecting p% of the edges at random and removes them from the network
 
         Returns:
         self.G (networkx type): the network after attack
         """
-
-        # Random attack selects p% of the edges at random and removes them from the network
 
         edges = list(self.G.edges())
 
@@ -47,13 +44,12 @@ class Attack():
 
 
     def degree_attack(self):
-
         """
         Executes degree attack by the following process:
-        1. Rank the nodes by its degree from high to low
-        2. First attack the edges connected to the node with highest degree
-        3. Then attack the edges connected to the node with second highest degree
-        4. Continue until p% of the edges have been attacked
+        1) Rank the nodes by its degree from high to low
+        2) First attack the edges connected to the node with highest degree
+        3) Then attack the edges connected to the node with second highest degree
+        4) Continue until p% of the edges have been attacked
 
         Returns:
         self.G (networkx type): the network after attack
@@ -79,16 +75,16 @@ class Attack():
 
 
     def betweenness_attack(self):
-
         """
         Executes betweenness attack by the following process:
-        1. Compute and rank the edge betweenness centrality of the network
-        2. Remove p% of the edges with the highest edge betweenness centrality
+        1) Compute and rank the edge betweenness centrality of the network
+        2) Remove p% of the edges with the highest edge betweenness centrality
 
         Returns:
         self.G (networkx type): the network after attack
 
-        Notes: to speed up computation on betweenness centrality, igraph is used to calcualte betweenness
+        Notes: 
+        1) to speed up computation on betweenness centrality, igraph is used to calcualte betweenness
         """
 
         nx.write_gml(self.G, 'network.gml')
