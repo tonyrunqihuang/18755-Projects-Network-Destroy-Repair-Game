@@ -13,6 +13,14 @@ from algorithm.defense import *
 
 class Runner:
     def __init__(self, args):
+        """
+        Initiates the runner class for experiments, this will set the target network, attack and defense algorithm, 
+        evaluation metric, and the directory to save the files
+
+        Parameters: 
+        args: the parameters used in the experiment
+        """
+
         self.args = args
         self.name = self.args.network_name
         self.p = self.args.p
@@ -35,6 +43,15 @@ class Runner:
 
     def run(self):
 
+        """
+        Runs the experiments for a total of n (self.n) time steps, and at each time step, 
+        one attack and one defense will be executed, and the Molloy-Reed value will be recorded
+
+        Returns: 
+        molloy_reed (list of length 2*n): the Molloy-Reed value for each attack and defense
+        """
+
+        # Printing the network information and experiment setting
         print('Network information \n', nx.info(self.network))
         print('Initiating experiment on {}, p = {}, iterations = {}, attack = {}, defense = {}'.format(\
                 self.name, self.p, self.n, self.args.attack_algorithm, self.args.defense_algorithm))

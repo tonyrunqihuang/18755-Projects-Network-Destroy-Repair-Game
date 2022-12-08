@@ -6,12 +6,32 @@ import networkx as nx
 
 class Attack():
     def __init__(self, G, p):
+        """
+        Initates the attack algorithm class
+
+        Parameters:
+        G (networkx type): the network
+        p (float): probability of attack (i.e., the proportion of edges being attacked)
+
+        Returns:
+        self.G (networkx type): the network
+        self.p (float): probability of attack
+        self.num_edges (int): the total number of edges being attacked
+        """
+
         self.G = G
         self.p = p
         self.num_edges = int(self.G.number_of_edges() * self.p)
 
 
     def random_attack(self):
+
+        """
+        Executes random attack by selecting p% of the edges at random and removes them from the network
+
+        Returns:
+        self.G (networkx type): the network after attack
+        """
 
         # Random attack selects p% of the edges at random and removes them from the network
 
@@ -28,11 +48,16 @@ class Attack():
 
     def degree_attack(self):
 
-        # Degree attack follows the following process:
-        # 1. Rank the nodes by its degree from high to low
-        # 2. First attack the edges connected to the node with highest degree
-        # 3. Then attack the edges connected to the node with second highest degree
-        # 4. Continue until p% of the edges have been attacked
+        """
+        Executes degree attack by the following process:
+        1. Rank the nodes by its degree from high to low
+        2. First attack the edges connected to the node with highest degree
+        3. Then attack the edges connected to the node with second highest degree
+        4. Continue until p% of the edges have been attacked
+
+        Returns:
+        self.G (networkx type): the network after attack
+        """
 
         count = 0
         degree = sorted(self.G.degree, key=lambda x: x[1], reverse=True)
@@ -55,9 +80,16 @@ class Attack():
 
     def betweenness_attack(self):
 
-        # Betweenness attack follows the following process:
-        # 1. Compute and rank the edge betweenness centrality of the network
-        # 2. Remove p% of the edges with the highest edge betweenness centrality
+        """
+        Executes betweenness attack by the following process:
+        1. Compute and rank the edge betweenness centrality of the network
+        2. Remove p% of the edges with the highest edge betweenness centrality
+
+        Returns:
+        self.G (networkx type): the network after attack
+
+        Notes: to speed up computation on betweenness centrality, igraph is used to calcualte betweenness
+        """
 
         nx.write_gml(self.G, 'network.gml')
         g = ig.Graph.Read_GML('network.gml')

@@ -9,7 +9,6 @@ class Defense():
         self.G = G
         self.p = p
         self.num_edges = num_edges
-        self.total_edges = int(self.G.number_of_edges() * self.p)
 
 
     def random_defense(self):

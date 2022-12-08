@@ -5,7 +5,17 @@ import matplotlib.pyplot as plt
 
 def plot_mr_robustness(data, dir, name):
 
-    # Plotting network robutsness vs. time
+    """
+    Plotting the robustness against the time steps
+
+    Parameters:
+    data (list): the robustness value
+    dir (str): the directory to save the graph
+    name (str): the name of network, for the caption in the graph
+
+    Returns:
+    data (list): the robustness value
+    """
 
     t = np.arange(len(data))
     plt.figure()
@@ -21,7 +31,18 @@ def plot_mr_robustness(data, dir, name):
 
 def degree_dist(network, dir, name, time):
 
-    # Plotting the degree distribution at time t
+    """
+    Plotting the network's degree distribution at time t
+
+    Parameters:
+    network (networkx file): the network to be analyzed
+    dir (str): the directory to save the graph
+    name (str): the name of network
+    time (float): the time step that is being analyzed
+
+    Returns:
+    y (list): the network's degree distribution
+    """
 
     y = nx.degree_histogram(network)
     x = np.arange(len(y)).tolist()
