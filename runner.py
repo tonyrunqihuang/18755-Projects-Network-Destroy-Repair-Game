@@ -44,8 +44,8 @@ class Runner:
     def run(self):
 
         """
-        Runs the experiments for a total of n (self.n) time steps, and at each time step, 
-        one attack and one defense will be executed, and the Molloy-Reed value will be recorded
+        Runs the experiments for a total of n (self.n) time steps, where at each time step one attack and 
+        one defense move will be executed, and the Molloy-Reed value will be recorded after each attack and defense
 
         Returns: 
         molloy_reed (list of length 2*n): the Molloy-Reed value for each attack and defense

@@ -64,7 +64,6 @@ class Attack():
             for edge in list(edges):
                 self.G.remove_edge(edge[0], edge[1])
                 count += 1
-            #     # print(count, self.num_edges)
                 
                 if count == self.num_edges:
                     break
