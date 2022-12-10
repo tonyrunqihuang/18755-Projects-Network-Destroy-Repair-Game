@@ -24,14 +24,14 @@ def get_args():
     parser.add_argument("--seed", type=float, default=123456, help="random seed")
     parser.add_argument("--network_name", type=str, default='P2P network', help="network name",
                         choices=['P2P network'])
-    parser.add_argument("--attack_algorithm", type=str, default='Betweenness', help="attack algorithm name",
+    parser.add_argument("--attack_algorithm", type=str, default='Random', help="attack algorithm name",
                         choices=['Random', 'Degree', 'Betweenness'])
-    parser.add_argument("--defense_algorithm", type=str, default='Betweenness', help="defense algorithm name",
+    parser.add_argument("--defense_algorithm", type=str, default='Random', help="defense algorithm name",
                     choices=['Random', 'Degree', 'Betweenness'])
     parser.add_argument("--criterion", type=str, default='molloy_reed', help="robustness metric",
                         choices=['molloy_reed'])
     parser.add_argument("--niter", type=float, default=100, help="number of steps in experiment")
-    parser.add_argument("--p", type=float, default=0.05, help="probability of selection",
+    parser.add_argument("--p", type=float, default=0.01, help="probability of selection",
                         choices=[0.01, 0.05, 0.1])
 
     return parser.parse_args()

@@ -48,9 +48,9 @@ This is the repository for the course project for CMU 18755 - Networks in the Re
 
 - `./utils/plot.py`: code for plotting results
 
-- `./experiment`: folder containing the experiment results and analysis
+- `./experiment`: folder to contain experiment results
 
-- `./data`: folder containing the network data
+- `./data`: folder containing the network data (txt and gml files)
 
 
 ## Usage
