@@ -5,24 +5,22 @@ This is the repository for the course project for CMU 18755 - Networks in the Re
 ## Project Info
 - Project Name: Network Destroy Repair Game
 
-- Group member 1 info: Tony Huang (runqih@andrew.cmu.edu)
+- Group member 1 info: Tony Huang, runqih@andrew.cmu.edu
 
-- Group member 2 info: Vikas Kashyap (vhuvinah@andrew.cmu.edu)
+- Group member 2 info: Vikas Kashyap, vhuvinah@andrew.cmu.edu
 
 
-## Project Description:
-- This repository includes the Python implementation for Network Destroy-Repair Game and the reports for each milestone.
+## Project Description
+- This repository includes the Python implementation for Network Destroy-Repair Game and the reports for each milestone. In this project, we are interested in investigating the robustness property of real-world network, by designing different attack/defense algorithms and simluating the response of the networks.
 
-- In this project, we are interested in investigating the robustness property of real-world network, by designing different attack/defense algorithms and simluating the response of the networks.
-
-- Data: [Stanford SNAP dataset](https://snap.stanford.edu/data/#citnets), Gnutella peer to peer network from August 31 2002, which is contained in the 'data' folder
+- Data: [Stanford SNAP dataset](https://snap.stanford.edu/data/#citnets), Gnutella peer to peer network from August 31 2002
 
 - Reports: The 'report' folder contains the report/demo/presentation for each of the three milestones
 
 - Known dependencies: Python, numpy, networkX, igraph
 
 
-## Paramters of the Experiment:
+## Experiment Parameters
 - `--seed`: defines the random seed setting for experiments
 
 - `--network_name`: defines the network that will be used for experiment (Gnutella peer-to-peer network from August 31 2002)
