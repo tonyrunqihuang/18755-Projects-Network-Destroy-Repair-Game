@@ -1,6 +1,6 @@
 # CMU 18755 - Networks in the Real World (Project)
 
-This is the repository for the course project for CMU 18755 - Networks in the Real World (Fall 2021).
+This is the repository for the course project for CMU 18755 - Networks in the Real World (Fall 2021). It can be accessed from [GitHub](https://github.com/tonyrunqihuang/18755-Projects-Network-Destroy-Repair-Game).
 
 ## Project Info
 - Project Name: Network Destroy Repair Game
