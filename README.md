@@ -15,8 +15,6 @@ This is the repository for the course project for CMU 18755 - Networks in the Re
 
 - Data: [Stanford SNAP dataset](https://snap.stanford.edu/data/#citnets), Gnutella peer to peer network from August 31 2002
 
-- Reports: The 'report' folder contains the report/demo/presentation for each of the three milestones
-
 - Known dependencies: Python, numpy, networkX, igraph
 
 
@@ -36,7 +34,7 @@ This is the repository for the course project for CMU 18755 - Networks in the Re
 - `--p`: defines the percentage of initial edges that will be attacked and repaired at each time step
 
 
-## Code Structure
+## Code and File Structure
 
 - `./runner.py`: contains code for running the experiments
 
@@ -51,6 +49,10 @@ This is the repository for the course project for CMU 18755 - Networks in the Re
 - `./utils/plot.py`: code for plotting results
 
 - `./experiment`: folder containing the experiment results and analysis
+
+- `./data`: folder containing the network data
+
+- `./data`: folder containing report/demo/presentation for each of the three milestones
 
 
 ## Usage
