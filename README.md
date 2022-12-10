@@ -52,8 +52,6 @@ This is the repository for the course project for CMU 18755 - Networks in the Re
 
 - `./data`: folder containing the network data
 
-- `./data`: folder containing report/demo/presentation for each of the three milestones
-
 
 ## Usage
 
