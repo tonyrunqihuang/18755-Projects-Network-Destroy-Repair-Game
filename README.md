@@ -1,5 +1,4 @@
-CMU 18755 - Networks in the Real World (Project)
-====
+# CMU 18755 - Networks in the Real World (Project)
 
 Project Info:
 - Project Name: Network Destroy Repair Game

@@ -15,7 +15,10 @@ class Runner:
     def __init__(self, args):
         """
         Initiates the runner class for experiments, this will set the target network, attack and defense algorithm, 
-        evaluation metric, and the directory to save the files
+        evaluation metric, and the directory to save the files.
+
+        The argument (self.args) are imported from the misc.py file, while the attack and defense algorithms are imported
+        from the "algorithm" folder
 
         Parameters: 
         args: the parameters used in the experiment

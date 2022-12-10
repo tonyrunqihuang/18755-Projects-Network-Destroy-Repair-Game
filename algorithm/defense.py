@@ -12,11 +12,12 @@ class Defense():
         Parameters:
         G (networkx type): the network
         p (float): probability of defense (i.e., the proportion of the initials edges being repaired)
+        num_edges (int): the total number of edges being repaired
 
         Returns:
         self.G (networkx type): the network
         self.p (float): probability of defense
-        self.num_edges (int): the total number of edges being repair
+        self.num_edges (int): the total number of edges being repaired
         """
 
         self.G = G
